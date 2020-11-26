@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Арабский алфавит</string>
+    <string name="result">Результат</string>
+    <string name="finish">Завершено</string>
+    <string name="dayli_reminders">"Ежедневные напоминания в "</string>
+    <string name="choose_more_3_leters">Выберите более трех букв для практики!</string>
+    <string name="its_practic_time">Время практики!</string>
+    <string name="watch_the_video_ad_to_turn_off_ads_for_today_and_continue_your_training_in_comfort">"Посмотрите видеообъявление, чтобы отключить рекламу на сегодня и продолжить обучение с комфортом. "</string>
+    <string name="watch_ads">Смотреть рекламу</string>
+    <string name="check_internet_connection">Ошибка загрузки, проверьте ваше интернет соединение.</string>
+    <string name="practice">Практика</string>
+    <string name="failed">Неудача</string>
+    <string name="made_3_mistakes">Допущено 3 ошибки</string>
+    <string name="to_practice">Практиковать</string>
+    <string name="arabic_alphabet">Арабский алфавит</string>
+    <string name="logOut">Выход</string>
+    <string name="title_courses">Курсы</string>
+    <string name="title_profile">Профиль</string>
+    <string name="title_setting">Настройки</string>
+    <string name="btn_sign_by_google">Войти с помошью Google</string>
+    <string name="ok">OK</string>
+    <string name="at_the_beginning_of_a_word">"В начале слова "</string>
+    <string name="in_the_middle_of_a_word">"В середине слова "</string>
+    <string name="at_the_end_of_a_word">"В конце слова "</string>
+</resources>

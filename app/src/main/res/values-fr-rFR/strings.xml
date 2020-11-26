@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Arabic Alphabet</string>
+    <string name="watch_the_video_ad_to_turn_off_ads_for_today_and_continue_your_training_in_comfort">"Regardez l'annonce vidéo pour désactiver les publicités pour aujourd'hui et poursuivre votre entraînement confortablement. "</string>
+    <string name="watch_ads">"Regarder des annonces "</string>
+    <string name="check_internet_connection">"Erreur de téléchargement, vérifiez votre connexion Internet. "</string>
+    <string name="practice">Entraine toi</string>
+    <string name="its_practic_time">"Entrainement! "</string>
+    <string name="choose_more_3_leters">"Choisissez plus de trois lettres pour pratiquer! "</string>
+    <string name="dayli_reminders">"Rappels quotidiens "</string>
+    <string name="finish">Terminé</string>
+    <string name="result">Résultat</string>
+    <string name="made_3_mistakes">"3 erreurs commises "</string>
+    <string name="failed">Échec</string>
+    <string name="ok" translatable="false">D\'accord</string>
+    <string name="to_practice">S\'entraîner</string>
+    <string name="arabic_alphabet">"Alphabet arabe "</string>
+    <string name="logOut">Déconnexion</string>
+    <string name="title_courses">Cours</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_setting">Paramètres</string>
+    <string name="btn_sign_by_google">"Connectez-vous avec Google "</string>
+    <string name="at_the_end_of_a_word">"À la fin d'un mot "</string>
+    <string name="in_the_middle_of_a_word">"Au milieu d'un mot "</string>
+    <string name="at_the_beginning_of_a_word">"Au début d'un mot "</string>
+</resources>

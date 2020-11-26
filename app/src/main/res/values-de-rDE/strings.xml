@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">"Arabisches Alphabet "</string>
+    <string name="ok">"OK "</string>
+    <string name="arabic_alphabet">"Arabisches Alphabet "</string>
+    <string name="btn_sign_by_google">"Melden Sie sich mit Google an "</string>
+    <string name="its_practic_time">"Übungszeit! "</string>
+    <string name="choose_more_3_leters">"Wähle mehr als drei Buchstaben zum Üben! "</string>
+    <string name="logOut">Ausloggen</string>
+    <string name="made_3_mistakes">"Допущено 3 ошибки "</string>
+    <string name="dayli_reminders">"Tägliche Erinnerungen "</string>
+    <string name="finish">"Abgeschlossen "</string>
+    <string name="title_courses">"Kurse "</string>
+    <string name="title_setting">"die Einstellungen "</string>
+    <string name="failed">Fehler</string>
+    <string name="check_internet_connection">"Download-Fehler, überprüfen Sie Ihre Internetverbindung. "</string>
+    <string name="watch_the_video_ad_to_turn_off_ads_for_today_and_continue_your_training_in_comfort">"Sehen Sie sich die Videoanzeige an, um Anzeigen für heute auszuschalten und Ihr Training bequem fortzusetzen. "</string>
+    <string name="practice">Trainieren</string>
+    <string name="to_practice">"Üben "</string>
+    <string name="title_profile">Profil</string>
+    <string name="result">Ergebnis</string>
+    <string name="watch_ads">Anzeigen ansehen</string>
+    <string name="at_the_beginning_of_a_word">"Am Anfang eines Wortes "</string>
+    <string name="in_the_middle_of_a_word">"Mitten in einem Wort "</string>
+    <string name="at_the_end_of_a_word">"Am Ende eines Wortes "</string>
+</resources>
