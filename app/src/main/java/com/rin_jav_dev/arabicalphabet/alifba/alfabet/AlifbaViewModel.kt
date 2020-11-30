@@ -10,38 +10,46 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class AlifbaViewModel : ViewModel() {
+     var onSuccesLettersListener:OnSuccesLettersListener?=null
+    var lettersList:ArrayList<Alif>?=null
 
-    private val _alifs = MutableLiveData<List<Alif>>().apply {
+    fun getLetters(){
+
         App.db.alifsModelDao().all
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).
             subscribe({
+
                 if(it.size>0){
-                    value=it
+                    lettersList= it as ArrayList<Alif>
                     onSucces(it)
 
                 }else{
-                    value= AlifsFactory.getAlifs()
-                    App.db.alifsModelDao().insertAll(value).subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread()).subscribe()}
-                },
-            {
-                value= AlifsFactory.getAlifs()
-                  App.db.alifsModelDao().
-                         insertAll(value)
+                    lettersList= AlifsFactory.getAlifs()!!
+                    App.db.alifsModelDao().insertAll(lettersList).subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread()).subscribe({
+                            onSucces(lettersList!!)
+                        })}
+            },
+                {
+                    lettersList= AlifsFactory.getAlifs()!!
+                    App.db.alifsModelDao().
+                    insertAll(lettersList)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe()
-            })
-      // value =
-      //     AlifsFactory.getAlifs()
+                        .subscribe({
+                            onSucces(lettersList!!)
+                        })
+                })
     }
-
     fun onSucces(alifs:List<Alif> ){
+        onSuccesLettersListener?.lettersLoaded(alifs)
     }
 
     fun onError(tr:List<Alif> ){
 
     }
-    val alifs: LiveData<List<Alif>> = _alifs
+    interface OnSuccesLettersListener{
+        fun lettersLoaded(alifs:List<Alif>);
+    }
 }

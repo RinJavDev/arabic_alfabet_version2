@@ -19,6 +19,9 @@ public interface AlifsModelDao {
     @Query("SELECT * FROM Alif WHERE enableForAlpfabetTest ")
     Maybe<List<Alif>> getOpened();
 
+    @Query("SELECT * FROM Alif WHERE NOT enableForAlpfabetTest ")
+    Maybe<Alif> getNotOpenLetter();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertAll(List<Alif> alifs);
     @Insert

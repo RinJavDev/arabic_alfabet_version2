@@ -17,10 +17,11 @@ import com.google.android.play.core.review.ReviewInfo
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.google.android.play.core.tasks.Task
 import com.rin_jav_dev.arabicalphabet.R
+import com.rin_jav_dev.arabicalphabet.database.alifs.Alif
 import com.rin_jav_dev.arabicalphabet.databinding.ActivityPracticeAlfabetBinding
 import kotlinx.android.synthetic.main.activity_practice_alfabet.*
 
-class PracticeAlfabetActivity : AppCompatActivity() {
+class PracticeAlfabetActivity : AppCompatActivity(),AlfabetPracticeViewModel.OpenNewLetter {
     private lateinit var practiceViewModel: AlfabetPracticeViewModel
     private  lateinit var  sp: SoundPool
     private val soundId = 1
@@ -28,6 +29,7 @@ class PracticeAlfabetActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         var bindig: ActivityPracticeAlfabetBinding = DataBindingUtil.setContentView(this,R.layout.activity_practice_alfabet)
         practiceViewModel =ViewModelProvider(this).get(AlfabetPracticeViewModel::class.java)
+        practiceViewModel.openNewLetterListener=this;
         bindig.viewModel=practiceViewModel
             setTitle(R.string.practice)
 
@@ -139,5 +141,10 @@ class PracticeAlfabetActivity : AppCompatActivity() {
         sp = SoundPool.Builder()
             .setAudioAttributes(attributes)
             .build()
+    }
+
+    override fun onOpenNewLetter(alif: Alif) {
+        setResult(10)
+        println("Открыта новая Буква "+alif.trancsription)
     }
 }

@@ -9,12 +9,14 @@ import androidx.lifecycle.ViewModel
 
 import com.rin_jav_dev.arabicalphabet.app.App
 import com.rin_jav_dev.arabicalphabet.app.SharedRepository
+import com.rin_jav_dev.arabicalphabet.database.alifs.Alif
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 class AlfabetPracticeViewModel : ViewModel() {
     var rightTranscription=""
+    lateinit var openNewLetterListener :OpenNewLetter;
     var  arabicLetter: ObservableField<String> = ObservableField()
     var  progress: ObservableField<String> = ObservableField()
     var  testPostition=0;
@@ -23,7 +25,7 @@ class AlfabetPracticeViewModel : ViewModel() {
     var  btnTest2: ObservableField<String> = ObservableField()
     var  btnTest3: ObservableField<String> = ObservableField()
     var  btnTest4: ObservableField<String> = ObservableField()
-
+    val alifsModelDao=App.db.alifsModelDao();
      var missings  = MutableLiveData<Int>().apply {
         value = 0
     }
@@ -33,6 +35,7 @@ class AlfabetPracticeViewModel : ViewModel() {
     var  soundId   = MutableLiveData<Int>().apply {
         value =null
     }
+
         init {
            // AlifsFactory.doFilterTestAlifs()
 
@@ -40,7 +43,7 @@ class AlfabetPracticeViewModel : ViewModel() {
         }
      @SuppressLint("CheckResult")
      fun nextQuestion(){
-         App.db.alifsModelDao().opened.subscribeOn(Schedulers.io())
+         alifsModelDao.opened.subscribeOn(Schedulers.io())
              .observeOn(AndroidSchedulers.mainThread()).
              subscribe({
                  val lettes=it
@@ -79,14 +82,33 @@ class AlfabetPracticeViewModel : ViewModel() {
          if(testPostition<maxPosition){
              nextQuestion()
          }else{
+
             finishTest()
          }
 
     }
 
+    @SuppressLint("CheckResult")
     private fun finishTest() {
-        finishTest.value=(maxPosition- missings.value!!).toString()+"/"+maxPosition
+        if(missings.value==0){
+            alifsModelDao.notOpenLetter.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).
+                subscribe({
+                    it.enableForAlpfabetTest=true
+                    alifsModelDao.update(it).subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread()).subscribe({
+                            openNewLetterListener.onOpenNewLetter(it)
 
+                        })
+                },{})
+
+            println("nextQuestion");
+
+            return;
+        }
+
+
+        finishTest.value=(maxPosition- missings.value!!).toString()+"/"+maxPosition
     }
 
 
@@ -94,4 +116,7 @@ class AlfabetPracticeViewModel : ViewModel() {
     //     value = AlifsFactory.getAlifs()
     // }
     // val alifs: LiveData<ArrayList<Alif>> = _alifs
+    interface OpenNewLetter{
+        fun onOpenNewLetter(alif: Alif);
+    };
 }

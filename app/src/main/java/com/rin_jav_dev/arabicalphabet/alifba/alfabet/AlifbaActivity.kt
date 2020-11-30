@@ -22,7 +22,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_alifba.*
 
 
-class AlifbaActivity : AppCompatActivity() {
+class AlifbaActivity : AppCompatActivity(),AlifbaViewModel.OnSuccesLettersListener {
     private lateinit var alifbaViewModel: AlifbaViewModel
     private lateinit var mInterstitialAd: InterstitialAd
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,47 +32,14 @@ class AlifbaActivity : AppCompatActivity() {
 
         alifbaViewModel =
             ViewModelProvider(this).get(AlifbaViewModel::class.java)
-        alifbaViewModel.alifs.observe(this, Observer {
-            rv_alifs.layoutManager =
-                (LinearLayoutManager(this, GridLayoutManager.VERTICAL, false))
-            rv_alifs.adapter =
-                ArabicLettersAdapter(
-                    it,
-                    object :
-                        ArabicLettersAdapter.Callback {
-                        override fun onItemClicked(item: Alif, position: Int) {
-
-                            item.enableForAlpfabetTest = !item.enableForAlpfabetTest
-                            App.db.alifsModelDao().update(item)
-                                .subscribeOn(Schedulers.io())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe()
-
-                                 rv_alifs.adapter!!.notifyItemChanged(position)
-
-                        }
-
-                        override fun onInfoClicked(position: Int) {
-                            val fm: FragmentManager = supportFragmentManager
-                            val alifDialogFragmentAlif =
-                                DialogFragmentAlif()
-                            val args = Bundle()
-                            println("alif_position " + position)
-                            args.putInt("alif_position", position)
-                            alifDialogFragmentAlif.arguments=args
-                            alifDialogFragmentAlif.show(fm, "alif_info")
-                        }
-
-                    })
-
-
-        })
+        alifbaViewModel.onSuccesLettersListener=this
+        alifbaViewModel.getLetters()
         btnPractice.setOnClickListener {
             App.db.alifsModelDao().opened.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).
                 subscribe({
                     if( it.size>=4){
-                        startActivity(Intent(this, PracticeAlfabetActivity::class.java))
+                        startActivityForResult(Intent(this, PracticeAlfabetActivity::class.java),0)
                         if (mInterstitialAd.isLoaded) {
                             mInterstitialAd.show()
                         }
@@ -93,6 +60,7 @@ class AlifbaActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        //alifbaViewModel.alifs.
         MobileAds.initialize(this) {}
         mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = SharedRepository.getStartPracticeIdentify()
@@ -102,6 +70,53 @@ class AlifbaActivity : AppCompatActivity() {
 
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode.equals(10)){
+            alifbaViewModel.getLetters()
+        }
+    }
+    override fun lettersLoaded(alifs: List<Alif>) {
+        rv_alifs.layoutManager =
+            (LinearLayoutManager(this, GridLayoutManager.VERTICAL, false))
+        rv_alifs.adapter =
+            ArabicLettersAdapter(
+                alifs,
+                object :
+                    ArabicLettersAdapter.Callback {
+                    override fun onItemClicked(item: Alif, position: Int) {
+
+                       // item.enableForAlpfabetTest = !item.enableForAlpfabetTest
+                       // App.db.alifsModelDao().update(item)
+                       //     .subscribeOn(Schedulers.io())
+                       //     .observeOn(AndroidSchedulers.mainThread())
+                       //     .subscribe()
+                       // rv_alifs.adapter!!.notifyItemChanged(position)
+
+                        val fm: FragmentManager = supportFragmentManager
+                        val alifDialogFragmentAlif =
+                            DialogFragmentAlif()
+                        val args = Bundle()
+                        println("alif_position " + position)
+                        args.putInt("alif_position", position)
+                        alifDialogFragmentAlif.arguments=args
+                        alifDialogFragmentAlif.show(fm, "alif_info")
+
+                    }
+
+                    override fun onInfoClicked(position: Int) {
+                        //val fm: FragmentManager = supportFragmentManager
+                        //val alifDialogFragmentAlif =
+                        //    DialogFragmentAlif()
+                        //val args = Bundle()
+                        //println("alif_position " + position)
+                        //args.putInt("alif_position", position)
+                        //alifDialogFragmentAlif.arguments=args
+                        //alifDialogFragmentAlif.show(fm, "alif_info")
+                    }
+
+                })
+    }
 
 
 }
