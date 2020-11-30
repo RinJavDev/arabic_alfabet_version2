@@ -34,13 +34,13 @@ class ArabicLettersAdapter(var items: List<Alif>, val callback: Callback) : Recy
             itemView.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) callback.onItemClicked(items[adapterPosition],position )
             }
-            btnInfo.setOnClickListener {  if (adapterPosition != RecyclerView.NO_POSITION) callback.onInfoClicked(position) }
+            btnInfo.setOnClickListener {  if (adapterPosition != RecyclerView.NO_POSITION) callback.onInfoClicked(item,position) }
         }
     }
 
    public interface Callback {
         fun onItemClicked(item: Alif, position: Int)
-        fun onInfoClicked(position: Int)
+        fun onInfoClicked(item: Alif,position: Int)
     }
 
 }

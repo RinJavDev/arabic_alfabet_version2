@@ -104,15 +104,13 @@ class AlifbaActivity : AppCompatActivity(),AlifbaViewModel.OnSuccesLettersListen
 
                     }
 
-                    override fun onInfoClicked(position: Int) {
-                        //val fm: FragmentManager = supportFragmentManager
-                        //val alifDialogFragmentAlif =
-                        //    DialogFragmentAlif()
-                        //val args = Bundle()
-                        //println("alif_position " + position)
-                        //args.putInt("alif_position", position)
-                        //alifDialogFragmentAlif.arguments=args
-                        //alifDialogFragmentAlif.show(fm, "alif_info")
+                    override fun onInfoClicked(item: Alif,position: Int) {
+                        item.enableForAlpfabetTest = !item.enableForAlpfabetTest
+                        App.db.alifsModelDao().update(item)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe()
+                        rv_alifs.adapter!!.notifyItemChanged(position)
                     }
 
                 })

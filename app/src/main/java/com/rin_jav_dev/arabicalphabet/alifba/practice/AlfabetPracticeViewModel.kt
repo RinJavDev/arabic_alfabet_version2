@@ -91,27 +91,39 @@ class AlfabetPracticeViewModel : ViewModel() {
     @SuppressLint("CheckResult")
     private fun finishTest() {
         if(missings.value==0){
+            println("star get new letter ");
             alifsModelDao.notOpenLetter.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).
                 subscribe({
+                    println("succes get new letter "+it);
                     it.enableForAlpfabetTest=true
                     alifsModelDao.update(it).subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread()).subscribe({
                             openNewLetterListener.onOpenNewLetter(it)
 
+                        }, {
+                            println("Trowable to add")
+                            finish()
                         })
-                },{})
+                },{
+                    println("Trowable");
+                    finish()
+                },{
+                    println("Complete");
+                    finish()
+                })
 
-            println("nextQuestion");
 
             return;
         }
 
+       finish()
 
-        finishTest.value=(maxPosition- missings.value!!).toString()+"/"+maxPosition
     }
 
-
+   fun finish(){
+       finishTest.value=(maxPosition- missings.value!!).toString()+"/"+maxPosition
+    }
     // private val _alifs = MutableLiveData<ArrayList<Alif>>().apply {
     //     value = AlifsFactory.getAlifs()
     // }
