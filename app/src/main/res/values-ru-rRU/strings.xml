@@ -23,4 +23,11 @@
     <string name="at_the_beginning_of_a_word">"В начале слова "</string>
     <string name="in_the_middle_of_a_word">"В середине слова "</string>
     <string name="at_the_end_of_a_word">"В конце слова "</string>
+    <string name="alifba_tutorial_text_for_dialog">
+        \n1.Изучайте доступные буквы(Они подсвечены зеленым)
+        \n2.Выполните практику без ошибок чтобы открыть новую букву</string>
+    <string name="alifba_tutorial_title_for_dialog">Руководство</string>
+    <string name="horray">Ура!</string>
+    <string name="new_letter_is_opened">Открыта новая буква!</string>
+
 </resources>

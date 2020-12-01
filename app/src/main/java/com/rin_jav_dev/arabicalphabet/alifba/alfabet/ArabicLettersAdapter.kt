@@ -26,7 +26,7 @@ class ArabicLettersAdapter(var items: List<Alif>, val callback: Callback) : Recy
         private val arabicLetter = itemView.findViewById<TextView>(R.id.tvArabicLetter)
         private val trancrption = itemView.findViewById<TextView>(R.id.tvTranscription)
         private val backGround = itemView.findViewById<ImageView>(R.id.iv_backGround)
-        private val btnInfo = itemView.findViewById<Button>(R.id.btnLetterInfo)
+    //    private val btnInfo = itemView.findViewById<Button>(R.id.btnLetterInfo)
         fun bind(item: Alif, position: Int) {
             if(item.enableForAlpfabetTest) backGround.setImageResource( R.drawable.letter_enable_background) else backGround.setImageResource( R.drawable.letter_background)
             arabicLetter.text = item.arabicLetter
@@ -34,7 +34,7 @@ class ArabicLettersAdapter(var items: List<Alif>, val callback: Callback) : Recy
             itemView.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) callback.onItemClicked(items[adapterPosition],position )
             }
-            btnInfo.setOnClickListener {  if (adapterPosition != RecyclerView.NO_POSITION) callback.onInfoClicked(item,position) }
+           // btnInfo.setOnClickListener {  if (adapterPosition != RecyclerView.NO_POSITION) callback.onInfoClicked(item,position) }
         }
     }
 

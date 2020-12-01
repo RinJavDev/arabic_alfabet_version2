@@ -23,4 +23,10 @@
     <string name="at_the_beginning_of_a_word">"Am Anfang eines Wortes "</string>
     <string name="in_the_middle_of_a_word">"Mitten in einem Wort "</string>
     <string name="at_the_end_of_a_word">"Am Ende eines Wortes "</string>
+    <string name="alifba_tutorial_text_for_dialog">"
+        \n1. Lernen Sie die verfügbaren Buchstaben (sie sind grün hervorgehoben).
+        \n2. Üben Sie fehlerfrei, um einen neuen Buchstaben zu öffnen "</string>
+    <string name="alifba_tutorial_title_for_dialog">"Lernprogramm "</string>
+    <string name="horray">Hurra!</string>
+    <string name="new_letter_is_opened">"Ein neuer Brief ist offen! "</string>
 </resources>

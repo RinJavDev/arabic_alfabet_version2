@@ -22,5 +22,10 @@
     <string name="at_the_beginning_of_a_word">At the beginning of a word</string>
     <string name="in_the_middle_of_a_word">In the middle of a word</string>
     <string name="at_the_end_of_a_word">At the end of a word</string>
-
+    <string name="alifba_tutorial_text_for_dialog">"
+        \n1. Learn the available letters (They are highlighted in green)
+        \n2. Do the practice without mistakes to open a new letter"</string>
+    <string name="alifba_tutorial_title_for_dialog">Tutorial</string>
+    <string name="horray">Hooray!</string>
+    <string name="new_letter_is_opened">A new letter is open!</string>
 </resources>

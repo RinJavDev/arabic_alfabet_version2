@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/iv_backGround"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="0dp"
         android:layout_margin="2dp"
         android:padding="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,15 +22,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:foregroundGravity="center|right"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnLetterInfo"
+        app:layout_constraintEnd_toEndOf="@+id/iv_backGround"
         app:layout_constraintStart_toStartOf="@+id/iv_backGround"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -57,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:gravity="center"
             android:shadowColor="#FFFFFF"
@@ -64,20 +63,8 @@
             android:shadowDy="2"
             android:shadowRadius="5"
             android:text="alif"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btnLetterInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:text="Info"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

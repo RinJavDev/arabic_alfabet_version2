@@ -1,0 +1,42 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.estvis.ma.DetailAct">
+<!--    <item-->
+<!--        android:id="@+id/action_reassign"-->
+<!--        android:orderInCategory="100"-->
+<!--        android:enabled="false"-->
+<!--        android:title="Reassign"-->
+<!--        app:showAsAction="never" />-->
+<!--    <item-->
+<!--        android:id="@+id/action_unassign"-->
+<!--        android:orderInCategory="102"-->
+<!--        android:title="Unassign"-->
+<!--        android:enabled="false"-->
+<!--        app:showAsAction="never" />-->
+
+    <item
+        android:id="@+id/show_tutorial"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:orderInCategory="201"
+        android:title="@string/alifba_tutorial_title_for_dialog"
+        app:showAsAction="always" />
+
+
+
+
+
+    <!--<item-->
+        <!--android:id="@+id/action_export_photos_mitchell"-->
+        <!--android:orderInCategory="201"-->
+        <!--android:enabled="false"-->
+        <!--android:title="Export photos"-->
+        <!--app:showAsAction="never" />-->
+    <!--android:icon="@drawable/ic_launcher"-->
+    <!--<item-->
+        <!--android:id="@+id/action_export_and_send_photos_mitchell"-->
+        <!--android:orderInCategory="201"-->
+        <!--android:enabled="false"-->
+        <!--android:title="Export and send photos"-->
+        <!--app:showAsAction="never" />-->
+</menu>

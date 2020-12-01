@@ -9,6 +9,7 @@ import android.media.SoundPool
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -144,6 +145,24 @@ class PracticeAlfabetActivity : AppCompatActivity(),AlfabetPracticeViewModel.Ope
     }
 
     override fun onOpenNewLetter(alif: Alif) {
+        var letterView=getLayoutInflater().inflate(R.layout.letter_item, null)
+        letterView.findViewById<TextView>(R.id.tvArabicLetter).setText(alif.arabicLetter)
+        letterView.findViewById<TextView>(R.id.tvTranscription).setText(alif.trancsription)
+        val builder: androidx.appcompat.app.AlertDialog.Builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.horray))
+            .setMessage(getString(R.string.new_letter_is_opened))
+            .setView(letterView)
+            //.setIcon(R.drawable.ic_launcher_cat)
+            .setCancelable(false)
+            .setPositiveButton(
+                getString(R.string.ok)
+            ) { dialog: DialogInterface, id: Int ->
+
+                dialog.cancel()
+                finish()
+            }
+        builder.create().show()
+
         setResult(10)
         println("Открыта новая Буква "+alif.trancsription)
     }
